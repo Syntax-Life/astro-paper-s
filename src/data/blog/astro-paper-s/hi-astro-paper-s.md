@@ -2,7 +2,7 @@
 title: "Welcome to AstroPaper-S"
 subtitle: "A fork of AstroPaper"
 date: 2025-05-18T12:00:00+08:00
-featured: true
+featured: false
 draft: false
 tags:
   - docs

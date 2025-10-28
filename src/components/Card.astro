@@ -6,6 +6,7 @@ import Datetime from "./Datetime.astro";
 // import Tag from "@/components/Tag.astro";
 import IconCategory from "@/assets/icons/IconCategory.svg";
 import IconTag from "@/assets/icons/IconTag.svg";
+import { SITE } from "@/config";
 
 export interface Props extends CollectionEntry<"blog"> {
   variant?: "h2" | "h3";
@@ -29,9 +30,12 @@ const headerProps = {
   style: { viewTransitionName: slugifyStr(title) },
   class: "text-lg font-medium hover:underline",
 };
+
+// Get display options from config
+const { showSubtitle, showDescription, showTags } = SITE.displayOptions;
 ---
 
-<li class="my-12">
+<li class="my-4">
   <a href={getPath(id, filePath)} class="group">
     <div
       class="inline-block text-lg font-medium text-accent underline-offset-4 group-hover:underline focus-visible:no-underline focus-visible:underline-offset-0"
@@ -44,9 +48,9 @@ const headerProps = {
         )
       }
     </div>
-    {subtitle && <h4 class="text-md mb-3">{subtitle}</h4>}
+    {subtitle && showSubtitle && <h4 class="text-md mb-3">{subtitle}</h4>}
 
-    <p class="mb-1 text-sm">{description || fallbackDesc}</p>
+    {showDescription && <p class="mb-1 text-sm">{description || fallbackDesc}</p>}
 
     <div class="flex flex-col flex-wrap space-y-2 md:flex-row md:space-y-0">
       <div class="mr-4 flex items-center space-x-0.5">
@@ -66,7 +70,7 @@ const headerProps = {
         )
       }
       {
-        tags.length > 0 && (
+        showTags && tags.length > 0 && (
           <div class="flex items-center space-x-0.5 opacity-80">
             <IconTag class="mt-0.5 h-4 w-4" />
             <div class="flex flex-wrap">

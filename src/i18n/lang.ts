@@ -73,6 +73,75 @@ const en = {
   },
 };
 
+// 简体中文
+const zhCN: typeof en = {
+  archives: {
+    title: "归档",
+    desc: "所有文章。",
+  },
+  posts: {
+    title: "文章",
+    desc: "我发过的所有文章。",
+  },
+  tags: {
+    title: "标签",
+    desc: "文章中使用的所有标签。",
+  },
+  tag: {
+    title: "标签：",
+    desc: (tag: string) => `所有带有标签「${tag}」的文章。`,
+  },
+  categories: {
+    title: "分类",
+    desc: "所有文章的分类。",
+  },
+  category: {
+    title: "分类：",
+    desc: (category: string) => `所有属于分类「${category}」的文章。`,
+  },
+  about: {
+    title: "关于",
+  },
+  search: {
+    title: "搜索",
+    desc: "搜索文章 ...",
+  },
+  notFoundPage: {
+    title: "页面不存在",
+    toHome: "回到首页",
+    toSearch: "尝试搜索",
+  },
+  date: {
+    shortFormat(datetime: dayjs.Dayjs): string {
+      return datetime.format("YYYY年MM月DD日");
+    },
+    fullFormat(datetime: dayjs.Dayjs): string {
+      return datetime.format("YYYY年MM月DD日 HH:mm");
+    },
+    published(strDate: string): string {
+      return `发布于 ${strDate}`;
+    },
+    updated(strDate: string): string {
+      return `更新于 ${strDate}`;
+    },
+  },
+  pagination: {
+    next: "下一页",
+    previous: "上一页",
+  },
+  license: {
+    copyright: "版权所有",
+    statement: "保留所有权利",
+  },
+  common: {
+    backToTop: "回到顶部",
+    themeBtn: "切换深色模式",
+    allPosts: "所有文章",
+    featuredPosts: "精选文章",
+    recentPosts: "最新文章",
+  },
+};
+
 // 繁體中文
 /*
 const zhHant: typeof en = {
@@ -291,4 +360,4 @@ const es: typeof en = {
 
 // Select the language you want to use
 // export const _t = zhHant;
-export const _t = en;
+export const _t = zhCN;

@@ -9,6 +9,7 @@ import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
 import { _t } from "@/i18n/lang";
+import Hr from "./Hr.astro";
 
 const { pathname } = Astro.url;
 
@@ -75,16 +76,16 @@ const isActive = (path: string) => {
             </a>
           </li>
           <li class="col-span-2">
-            <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
-              {_t.tags.title}
-            </a>
-          </li>
-          <li class="col-span-2">
             <a
               href="/categories"
               class:list={{ "active-nav": isActive("/categories") }}
             >
               {_t.categories.title}
+            </a>
+          </li>
+          <li class="col-span-2">
+            <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
+              {_t.tags.title}
             </a>
           </li>
           <li class="col-span-2">
@@ -146,10 +147,10 @@ const isActive = (path: string) => {
       </nav>
     </div>
   </div>
-  <div class="mx-auto w-full">
+  <!-- <div class="mx-auto w-full">
     <hr class="border-skin-line" aria-hidden={true} />
-  </div>
-  <!-- <Hr /> -->
+  </div> -->
+  <Hr />
 </header>
 
 <script>

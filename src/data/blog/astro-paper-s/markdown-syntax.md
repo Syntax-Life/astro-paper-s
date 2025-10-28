@@ -3,7 +3,7 @@ title: "Markdown Syntax"
 subtitle: "Rendering effect display 👍"
 date: 2024-09-28T12:08:01+08:00
 updated: 2025-05-18T09:00:00+08:00
-featured: true
+featured: false
 draft: false
 tags:
   - docs

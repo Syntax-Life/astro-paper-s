@@ -4,7 +4,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
-  --font-sans: "Noto Sans", "Noto Sans TC", sans-serif;
+  --font-sans: "Noto Sans SC", "Noto Sans", "Noto Sans TC", sans-serif;
   --font-mono: "Roboto Mono", "Noto Sans TC", monospace;
   --font-emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
 
