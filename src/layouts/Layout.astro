@@ -19,6 +19,7 @@ export interface Props {
   toc?: boolean;
   math?: boolean;
   comments?: boolean;
+  lightgallery?: boolean;
 }
 
 const {
@@ -34,6 +35,7 @@ const {
   scrollSmooth = false,
   toc = false,
   math = false,
+  lightgallery = SITE.lightGallery.enabled,
   // comments = false,
 } = Astro.props;
 
@@ -175,7 +177,7 @@ const structuredData = {
       toc && (
         <link
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.29.0/tocbot.min.css"
+          href="https://cos.lhasa.icu/dist/tocbot/tocbot.min.css"
           integrity="sha512-4q0OX9NAYcRTFEfy9nTK0AV9N7MxM665neDXEW3CjAj1pXc6+8Bcd6ryXl6cY8mTBBXt0aXepnSDLLQZSuJRww=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
@@ -188,11 +190,25 @@ const structuredData = {
       math && (
         <link
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css"
+          href="https://cos.lhasa.icu/dist/css/katex.min.css"
           integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g=="
           crossorigin="anonymous"
           referrerpolicy="no-referrer"
         />
+      )
+    }
+
+    <!-- LightGallery -->
+    {
+      lightgallery && (
+        <>
+          <script
+            is:inline src="https://cos.lhasa.icu/dist/lightgalleryjs/lightgallery.min.js"
+            integrity="sha512-k6Pa1v/3IxwfV5NrJZOygmMHcXB3wWtgVBaTW0CwIfR5g+nhBrHaTTK/AAlD6i+SVS26491Lf9OjM7wo3Z5lhA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+          ></script>
+        </>
       )
     }
   </head>

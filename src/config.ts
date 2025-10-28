@@ -20,7 +20,7 @@ export const SITE = {
     text: "Suggest Changes",
     url: "https://github.com/satnaing/astro-paper/tree/main/",
   },
-  dynamicOgImage: true,
+  dynamicOgImage: false,
   lang: "zh-CN", // html lang code. Set this empty and default will be "en"
   langOg: "zh_CN", // Open Graph locale tag, format 'language_TERRITORY' https://ogp.me/#optional
   timezone: "Asia/Taipei", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -35,4 +35,13 @@ export const SITE = {
     showFooterSocialLinks: true, // Show social links in footer
     showDate: false, // Show date in article pages
   },
+  
+  // LightGallery
+  lightGallery: {
+    enabled: true,
+  },
 } as const;
+
+// 图片相关配置
+export const IMAGES = "https://cos.lhasa.icu/dist/images";
+export const EXIF = "https://lhasa-1253887673.cos.ap-shanghai.myqcloud.com/dist/images";

@@ -3,6 +3,7 @@ import { defineConfig } from "astro/config";
 import fs from "node:fs";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap, { type SitemapOptions } from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeFigure from "@microflash/rehype-figure";
@@ -119,8 +120,9 @@ const sitemapOption: SitemapOptions = {
 export default defineConfig({
   site: SITE.website,
   integrations: [
-    sitemap(sitemapOption),
     expressiveCode(expressiveCodeOption),
+    mdx(),
+    sitemap(sitemapOption),
     minify(),
     compressor({ gzip: true, brotli: true }),
   ],

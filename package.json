@@ -4,9 +4,9 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --host",
     "build": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
-    "preview": "astro preview",
+    "preview": "astro preview --host",
     "sync": "astro sync",
     "astro": "astro",
     "format:check": "prettier --check .",
@@ -17,6 +17,7 @@
     "md:fix": "pnpm dlx markdownlint-cli2 --fix ./src/data/blog/**"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.8",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.4.0",
     "@expressive-code/plugin-line-numbers": "^0.41.2",
@@ -30,6 +31,7 @@
     "astro-expressive-code": "^0.41.2",
     "dayjs": "^1.11.13",
     "katex": "^0.16.22",
+    "lightgallery.js": "github:sachinchoolur/lightgallery.js#b9c80891859cf015007f0f4597b657d5af59fb2c",
     "lodash.kebabcase": "^4.1.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-external-links": "^3.0.0",
