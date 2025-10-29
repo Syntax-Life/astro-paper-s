@@ -8,6 +8,7 @@ import Footer from "@/components/Footer.astro";
 import Card from "@/components/Card.astro";
 import Pagination from "@/components/Pagination.astro";
 import getUniqueCategories from "@/utils/getUniqueCategories";
+import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
 import { _t } from "@/i18n/lang";
 import getDescription from "@/utils/getDescription";
@@ -17,8 +18,8 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const categories = getUniqueCategories(posts);
 
   return categories.flatMap(({ category, categoryName }) => {
-    const categoryPosts = posts.filter(post =>
-      post.data.categories.includes(categoryName)
+    const categoryPosts = getSortedPosts(
+      posts.filter(post => post.data.categories.includes(categoryName))
     );
 
     return paginate(categoryPosts, {
