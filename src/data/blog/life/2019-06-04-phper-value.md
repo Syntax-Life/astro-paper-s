@@ -7,7 +7,7 @@ draft: false
 tags:
   - 生活
 categories: ["生活"]
-toc: true
+toc: false
 comments: false
 image: jiazhi.jpg_81
 ---

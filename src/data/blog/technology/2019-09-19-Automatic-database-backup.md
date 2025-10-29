@@ -8,7 +8,7 @@ tags:
   - 技术
   - CentOS
 categories: ["技术"]
-toc: true
+toc: false
 comments: false
 image: centOS.jpg_81
 ---

@@ -8,7 +8,7 @@ tags:
   - 生活
   - 技术
 categories: ["生活"]
-toc: true
+toc: false
 comments: false
 image: TechnologyBlessingAndCurse.jpg_81
 ---

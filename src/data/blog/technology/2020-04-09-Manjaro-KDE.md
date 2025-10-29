@@ -9,7 +9,7 @@ tags:
   - Manjaro
   - Linux
 categories: ["技术"]
-toc: true
+toc: false
 comments: false
 image: manjaro.jpg_81
 ---

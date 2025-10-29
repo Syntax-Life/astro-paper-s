@@ -9,7 +9,7 @@ tags:
   - Jekyll
   - Bug
 categories: ["技术"]
-toc: true
+toc: false
 comments: false
 image: JekylltZinfoData.png_81
 ---

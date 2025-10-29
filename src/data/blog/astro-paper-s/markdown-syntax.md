@@ -9,7 +9,7 @@ tags:
   - docs
   - rendering
 categories: ["AstroPaper-S"]
-toc: true
+toc: false
 comments: false
 math: true
 ---

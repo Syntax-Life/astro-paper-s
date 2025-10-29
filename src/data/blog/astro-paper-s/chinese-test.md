@@ -9,7 +9,7 @@ tags:
   - rendering
   - 中文
 categories: ["AstroPaper-S"]
-toc: true
+toc: false
 comments: false
 ---
 

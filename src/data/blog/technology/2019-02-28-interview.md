@@ -9,7 +9,7 @@ tags:
   - 校招
   - 面试
 categories: ["技术"]
-toc: true
+toc: false
 comments: false
 image: zongjie.jpg_81
 ---

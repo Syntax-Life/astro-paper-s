@@ -8,7 +8,7 @@ tags:
   - 技术
   - PHP
 categories: ["技术"]
-toc: true
+toc: false
 comments: false
 image: php.jpg_81
 ---

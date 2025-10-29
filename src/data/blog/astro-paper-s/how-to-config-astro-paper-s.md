@@ -7,7 +7,7 @@ tags:
   - docs
   - configuration
 categories: ["AstroPaper-S"]
-toc: true
+toc: false
 comments: true
 ---
 

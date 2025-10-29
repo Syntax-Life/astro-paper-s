@@ -30,9 +30,10 @@ const getUniqueCategories = (posts: CollectionEntry<"blog">[]): Category[] => {
       }
     });
 
-  const categories = Array.from(catCountMap.values()).sort((catA, catB) =>
-    catA.category.localeCompare(catB.category)
-  );
+  const categories = Array.from(catCountMap.values()).sort((catA, catB) => {
+    if (catB.count !== catA.count) return catB.count - catA.count;
+    return catA.category.localeCompare(catB.category);
+  });
   return categories;
 };
 

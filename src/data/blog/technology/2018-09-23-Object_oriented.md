@@ -9,7 +9,7 @@ tags:
   - OOP
   - PHP
 categories: ["技术"]
-toc: true
+toc: false
 comments: false
 image: oop.jpg_81
 ---

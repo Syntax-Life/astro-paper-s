@@ -8,7 +8,7 @@ tags:
   - 生活
   - 知乎
 categories: ["生活"]
-toc: true
+toc: false
 comments: false
 image: zhihu.png_81
 ---

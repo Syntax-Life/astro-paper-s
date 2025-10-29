@@ -9,7 +9,7 @@ tags:
   - Bug
   - 更新
 categories: ["技术"]
-toc: true
+toc: false
 comments: false
 image: update.jpg_81
 ---
