@@ -21,13 +21,19 @@ const {
   exif = SITE.imageConfig.exif.enabled 
 } = Astro.props;
 
+// 去除路径片段中的文件扩展名（如 .html）
+const stripExtension = (name: string): string => {
+  // 仅移除最后一个点之后的扩展名，保留名称中可能存在的其他点
+  return name.replace(/\.[^\/.]+$/, '');
+};
+
 // 获取前端matter中的slug信息
 const getFrontmatterSlug = (): string | undefined => {
   try {
     // 尝试从Astro props中获取frontmatter
     const frontmatter = (Astro as any).props?.frontmatter || (Astro as any).frontmatter;
     if (frontmatter?.slug) {
-      return frontmatter.slug;
+      return stripExtension(frontmatter.slug);
     }
     
     // 从URL路径中提取slug
@@ -35,7 +41,7 @@ const getFrontmatterSlug = (): string | undefined => {
     const pathSegments = pathname.split('/').filter(Boolean);
     if (pathSegments.length > 0) {
       const lastSegment = pathSegments[pathSegments.length - 1];
-      return lastSegment;
+      return stripExtension(lastSegment);
     }
     
     // 服务端环境下从请求URL中提取
@@ -43,7 +49,7 @@ const getFrontmatterSlug = (): string | undefined => {
       const url = new URL(Astro.request.url);
       const segments = url.pathname.split('/').filter(Boolean);
       if (segments.length > 0) {
-        return segments[segments.length - 1];
+        return stripExtension(segments[segments.length - 1]);
       }
     }
     
