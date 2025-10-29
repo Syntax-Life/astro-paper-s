@@ -9,6 +9,7 @@ import Datetime from "@/components/Datetime.astro";
 import EditPost from "@/components/EditPost.astro";
 // import ShareLinks from "@/components/ShareLinks.astro";
 import BackButton from "@/components/BackButton.astro";
+import Artalk from "@/components/Artalk.astro";
 import { getPath } from "@/utils/getPath";
 import { slugifyStr } from "@/utils/slugify";
 import IconChevronLeft from "@/assets/icons/IconChevronLeft.svg";
@@ -108,7 +109,7 @@ const nextPost =
   <main
     id="main-content"
     class:list={[
-      "mx-auto w-full max-w-2xl px-4 pb-32 xl:max-w-3xl",
+      "mx-auto w-full max-w-2xl px-4 pb-8 xl:max-w-3xl",
       { "mt-8": !SITE.showBackButton },
     ]}
     data-pagefind-body
@@ -203,7 +204,7 @@ const nextPost =
     <hr class="my-6" />
 
     <!-- Previous/Next Post Buttons -->
-    <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+    <div data-pagefind-ignore class="grid grid-cols-1 gap-6 sm:grid-cols-2 my-6">
       {
         prevPost && (
           <a
@@ -248,6 +249,7 @@ const nextPost =
         // https://astro-paper.pages.dev/posts/how-to-integrate-giscus-comments/
       )
     }
+    <div id="Comments"></div>
   </main>
 
   <!-- Sidebar -->
@@ -298,6 +300,7 @@ const nextPost =
 
   <Footer />
 </Layout>
+<Artalk />
 
 <script is:inline data-astro-rerun type="module">
   const mobileWidth = 1024; // lg breakpoint
