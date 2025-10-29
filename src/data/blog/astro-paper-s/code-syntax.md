@@ -3,7 +3,7 @@ title: "Code Syntax Highlighter "
 subtitle: "Rendering effect display"
 date: 2025-05-18T09:00:00+08:00
 featured: false
-draft: false
+draft: true
 tags:
   - docs
   - rendering

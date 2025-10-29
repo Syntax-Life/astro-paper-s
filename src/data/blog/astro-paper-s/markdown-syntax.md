@@ -4,7 +4,7 @@ subtitle: "Rendering effect display 👍"
 date: 2024-09-28T12:08:01+08:00
 updated: 2025-05-18T09:00:00+08:00
 featured: false
-draft: false
+draft: true
 tags:
   - docs
   - rendering
