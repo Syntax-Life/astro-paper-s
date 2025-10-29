@@ -157,6 +157,9 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
+    preview: {
+      allowedHosts: ["lhasa.icu"],
+    },
   },
   trailingSlash: "never",
   build: {
