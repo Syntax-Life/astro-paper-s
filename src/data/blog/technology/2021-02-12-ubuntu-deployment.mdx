@@ -112,7 +112,8 @@ ubuntu@139.199.105.72's password:
 scp: /var/www/htdocs: Permission denied
 ```
 
-用 scp 推送文件夹的时候出现了`Permission denied`<br>
+用 scp 推送文件夹的时候出现了`Permission denied`
+
 what the?　我被拒绝了？  
 
 想了想原来是网站的根目录`/var/www`没有写入权限，让我们chmod一下？
@@ -239,7 +240,7 @@ phpinfo();
 ```
 
 ### 配置php
-ubuntu serverd的php配置文件在`/etc/php/5.6/apache2/php.ini`<br>
+ubuntu serverd的php配置文件在`/etc/php/5.6/apache2/php.ini`
 近期发现php的时区是GMT（格林威治平时），而不是GMT+8（东八区）它们的显示时间会相差8个小时，这怎么行！
  
 ```bash
@@ -247,10 +248,9 @@ ubuntu serverd的php配置文件在`/etc/php/5.6/apache2/php.ini`<br>
 $ sudo vi /etc/php/5.6/apache2/php.ini
 # 找到 date.timezone 并赋值 PRC（中华人民共和国英文缩写） date.timezone = PRC
 ```
-
 输入我的公网ip查看一下  
-![Alt text]({{ site.ARTICLEPICTURES_PATH }}/phpinfo.png "php5.6安装成功！Cheers!") 
 
+<Img src="phpinfo.png" alt="php5.6安装成功" />
 
 ## 安装mysql
 

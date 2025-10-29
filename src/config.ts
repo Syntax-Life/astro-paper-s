@@ -1,6 +1,6 @@
 export const SITE = {
-  website: "https://lhasa.icu", // replace this with your deployed domain, e.g. https://ziteh.github.io/
-  author: "lhasa", // 君の名は ~
+  website: "https://lhasa.icu",
+  author: "lhasa",
   profile: "https://github.com/achuanya",
   desc: "骑过湖边的小径，走过文字里的角落，偶尔停下，看见风，也看见自己",
   title: "游钓四方",
@@ -36,12 +36,42 @@ export const SITE = {
     showDate: false, // Show date in article pages
   },
   
-  // LightGallery
-  lightGallery: {
-    enabled: true,
+// 图片组件配置
+  imageConfig: {
+    // 图片资源配置
+    imagesUrl: "https://cos.lhasa.icu/dist/images",
+    exifUrl: "https://lhasa-1253887673.cos.ap-shanghai.myqcloud.com/dist/images",
+    
+    // 标签样式配置
+    tags: {
+      defaultStyle: "long" as "long" | "short" | false, // 默认标签样式：long长条形、short标签形、false不显示
+    },
+    
+    // EXIF配置
+    exif: {
+      enabled: true,           // EXIF信息显示开关
+      cache: {
+        enabled: true,         // EXIF缓存开关
+        expiryDays: 7,        // 缓存过期天数
+      },
+    },
+    
+    // 图片加载配置
+    loading: {
+      lazy: true,             // 懒加载开关
+      quality: {
+        enabled: true,        // 图片质量优化开关
+        defaultSize: "1600-2400", // 默认LightGallery尺寸
+      },
+    },
+    
+    // LightGallery配置
+    lightGallery: {
+      enabled: true,          // LightGallery开关
+      mousewheel: true,       // 鼠标滚轮支持
+      download: true,        // 下载按钮
+      selector: '.lightgallery-wrapper > a', // 选择器
+      subHtmlSelectorRelative: true,
+    },
   },
 } as const;
-
-// 图片相关配置
-export const IMAGES = "https://cos.lhasa.icu/dist/images";
-export const EXIF = "https://lhasa-1253887673.cos.ap-shanghai.myqcloud.com/dist/images";
