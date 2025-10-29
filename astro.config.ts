@@ -158,7 +158,9 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"],
     },
     preview: {
-      allowedHosts: ["lhasa.icu"],
+      host: true,
+      port: 4321,
+      allowedHosts: ['lhasa.icu'],
     },
   },
   trailingSlash: "never",
