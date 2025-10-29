@@ -21,7 +21,7 @@ import { SITE } from "@/config";
 import getDescription from "@/utils/getDescription";
 // import DisqusComment from "@/components/DisqusComment.astro";
 import WontonComment from "@/components/WontonComment.astro";
-import 'lightgallery.js/dist/css/lightgallery.css';
+
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -86,7 +86,6 @@ const layoutProps = {
   toc,
   math,
   comments,
-  lightgallery: SITE.imageConfig.lightGallery.enabled, // 文章页面启用 LightGallery
 };
 
 /* ========== Prev/Next Posts ========== */

@@ -19,7 +19,6 @@ export interface Props {
   toc?: boolean;
   math?: boolean;
   comments?: boolean;
-  lightgallery?: boolean;
 }
 
 const {
@@ -35,7 +34,6 @@ const {
   scrollSmooth = false,
   toc = false,
   math = false,
-  lightgallery = SITE.imageConfig.lightGallery.enabled,
   // comments = false,
 } = Astro.props;
 
@@ -198,19 +196,7 @@ const structuredData = {
       )
     }
 
-    <!-- LightGallery -->
-    {
-      lightgallery && (
-        <>
-          <script
-            is:inline src="https://cos.lhasa.icu/dist/lightgalleryjs/lightgallery.min.js"
-            integrity="sha512-k6Pa1v/3IxwfV5NrJZOygmMHcXB3wWtgVBaTW0CwIfR5g+nhBrHaTTK/AAlD6i+SVS26491Lf9OjM7wo3Z5lhA=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"
-          ></script>
-        </>
-      )
-    }
+
   </head>
   <body>
     <slot />

@@ -38,6 +38,7 @@ export function initLightGallery(): void {
     subHtmlSelectorRelative: SITE.imageConfig.lightGallery.subHtmlSelectorRelative,
     mousewheel: SITE.imageConfig.lightGallery.mousewheel,
     download: SITE.imageConfig.lightGallery.download,
+    mode: 'lg-zoom-in-out', // 使用自定义的 zoom-in-out 过渡动画
   });
 }
 

@@ -127,13 +127,14 @@ const exifUrl = exif ? generateExifUrl(finalSrc) : undefined;
   </div>
 </figure>
 
-<!-- 引入工具脚本 -->
 <script>
   import '@/utils/lightGallery';
   import '@/utils/images';
+  import 'lightgallery.js/dist/css/lightgallery.css';
 </script>
 
-<!-- 样式定义：EXIF提示框和图片标签的样式 -->
+<script is:inline src="https://cos.lhasa.icu/dist/lightgalleryjs/lightgallery.min.js"></script>
+
 <style>
   @reference "tailwindcss";
   
@@ -192,5 +193,32 @@ const exifUrl = exif ? generateExifUrl(finalSrc) : undefined;
   
   :global(.prose) .img-container .img-main {
     margin: 0 !important;
+  }
+
+  /* lg-zoom-in-out */
+  :global(.lg-zoom-in-out) {
+    .lg-item {
+      opacity: 0;
+      will-change: transform, opacity;
+
+      &.lg-prev-slide {
+        transform: scale3d(2, 2, 2);
+      }
+
+      &.lg-next-slide {
+        transform: scale3d(0, 0, 0);
+      }
+
+      &.lg-current {
+        transform: scale3d(1, 1, 1);
+        opacity: 1;
+      }
+
+      &.lg-prev-slide,
+      &.lg-next-slide,
+      &.lg-current {
+        transition: transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 1s ease 0s;
+      }
+    }
   }
 </style>
