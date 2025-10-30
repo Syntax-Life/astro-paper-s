@@ -123,10 +123,11 @@ export default defineConfig({
     expressiveCode(expressiveCodeOption),
     mdx(),
     sitemap(sitemapOption),
-    minify({
-      // Re-enable CSS minification with error recovery to avoid parser crashes
-      css: { minify: true, errorRecovery: true },
-    }),
+    minify(),
+    // minify({
+    //   // Re-enable CSS minification with error recovery to avoid parser crashes
+    //   css: { minify: true, errorRecovery: true },
+    // }),
     compressor({ gzip: true, brotli: true }),
   ],
   markdown: {

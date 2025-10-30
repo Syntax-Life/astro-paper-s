@@ -355,7 +355,7 @@ export function initExifTooltips() {
   
   images.forEach((img) => {
     const exifUrl = img.getAttribute('data-exif-url');
-    const tooltip = img.closest('.lightgallery-wrapper')?.querySelector('[data-exif-tooltip]') as HTMLElement;
+    const tooltip = img.closest('.lightbox')?.querySelector('[data-exif-tooltip]') as HTMLElement;
     
     if (!tooltip) return;
 
@@ -462,7 +462,7 @@ export function initExifTooltips() {
       observer.observe(img);
 
       // 小屏幕设备：点击图片直接触发 LightGallery，不影响 EXIF 显示
-      const imgWrapper = img.closest('.lightgallery-wrapper');
+      const imgWrapper = img.closest('.lightbox');
       const lightGalleryLink = imgWrapper?.querySelector('.lightgallery-link') as HTMLElement;
       
       if (lightGalleryLink) {
@@ -489,7 +489,7 @@ export function initExifTooltips() {
       autoShowObserver.observe(img);
       
       // PC端鼠标悬停逻辑
-      const imgWrapper = img.closest('.lightgallery-wrapper');
+      const imgWrapper = img.closest('.lightbox');
       const hoverArea = imgWrapper || img.parentElement;
       
       const handleMouseEnter = () => {

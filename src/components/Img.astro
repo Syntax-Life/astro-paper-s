@@ -92,12 +92,13 @@ const generateExifUrl = (imageSrc: string): string => {
 
 // 生成EXIF URL
 const exifUrl = exif ? generateExifUrl(finalSrc) : undefined;
+
+const galleryName = getFrontmatterSlug() ?? 'images';
 ---
 
 <!-- 图片容器：使用figure标签包装，支持响应式和居中显示 -->
 <figure class={`my-6 mx-auto text-center max-w-full ${className || ''}`} style={style}>
-  <!-- 图片包装器：支持LightGallery和EXIF提示框 -->
-  <div class="relative inline-block max-w-full md:max-w-3xl rounded-lg overflow-hidden lightgallery-wrapper">
+  <div class="relative inline-block max-w-full md:max-w-3xl rounded-lg overflow-hidden lightbox">
     <!-- EXIF信息提示框：仅在启用EXIF时显示 -->
     {exif && (
       <div class="absolute top-0 left-0 right-0 opacity-0 invisible -translate-y-full transition-all duration-150 ease-out z-50 pointer-events-none exif-tooltip" data-exif-tooltip>
@@ -107,13 +108,15 @@ const exifUrl = exif ? generateExifUrl(finalSrc) : undefined;
       </div>
     )}
     
-    <!-- LightGallery链接：点击图片时打开灯箱效果 -->
-    <a href={finalSrc} 
-       data-src={finalSrc} 
-       data-lg-size={SITE.imageConfig.loading.quality.defaultSize} 
-       data-sub-html={alt}
-       class="lightgallery-link">
-      <!-- 主图片元素：支持懒加载和响应式 -->
+    <a 
+      href={finalSrc}
+      class="glightbox"
+      data-gallery={galleryName}
+      data-description={alt}
+      data-desc-merged="0"
+      data-desc-position="bottom"
+      data-type="image"
+       >
       <img 
       src={finalSrc} 
       alt={alt}
@@ -132,18 +135,10 @@ const exifUrl = exif ? generateExifUrl(finalSrc) : undefined;
     )}
   </div>
 </figure>
-
 <script>
-  // Import LightGallery styles & UMD scripts from local node_modules
-  import 'lightgallery.js/src/css/lightgallery.css';
-  import 'lightgallery.js/src/css/lg-transitions.css';
-  import 'lightgallery.js/lib/js/lg-utils.js';
-  import 'lightgallery.js/lib/js/lightgallery.js';
-
-  // Project utilities
-  import '@/utils/lightGallery';
   import '@/utils/images';
-  
+  import { initLightbox } from '@/utils/lightbox';
+  initLightbox();
 </script>
 
 <style>
@@ -204,32 +199,5 @@ const exifUrl = exif ? generateExifUrl(finalSrc) : undefined;
   
   :global(.prose) .img-container .img-main {
     margin: 0 !important;
-  }
-
-  /* lg-zoom-in-out */
-  :global(.lg-zoom-in-out) {
-    .lg-item {
-      opacity: 0;
-      will-change: transform, opacity;
-
-      &.lg-prev-slide {
-        transform: scale3d(2, 2, 2);
-      }
-
-      &.lg-next-slide {
-        transform: scale3d(0, 0, 0);
-      }
-
-      &.lg-current {
-        transform: scale3d(1, 1, 1);
-        opacity: 1;
-      }
-
-      &.lg-prev-slide,
-      &.lg-next-slide,
-      &.lg-current {
-        transition: transform 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 1s ease 0s;
-      }
-    }
   }
 </style>

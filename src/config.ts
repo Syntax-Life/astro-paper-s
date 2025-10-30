@@ -61,17 +61,7 @@ export const SITE = {
       lazy: true,             // 懒加载开关
       quality: {
         enabled: true,        // 图片质量优化开关
-        defaultSize: "1600-2400", // 默认LightGallery尺寸
       },
-    },
-    
-    // LightGallery配置
-    lightGallery: {
-      enabled: true,          // LightGallery开关
-      mousewheel: true,       // 鼠标滚轮支持
-      download: true,        // 下载按钮
-      selector: '.lightgallery-wrapper > a', // 选择器
-      subHtmlSelectorRelative: true,
     },
   },
 } as const;

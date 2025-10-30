@@ -1,0 +1,8 @@
+/* 控制底部描述容器高度 */
+.gdesc-inner {
+  padding: 5px 5px !important;
+  margin-left: 10px;
+}
+.zoomable {
+  max-height: calc(100vh - 60px) !important;
+}
