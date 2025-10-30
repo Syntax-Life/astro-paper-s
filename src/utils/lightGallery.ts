@@ -8,6 +8,7 @@ import { SITE } from "@/config";
 declare global {
   interface Window {
     lightGallery: any;
+    lightgallery: any;
   }
   
   interface HTMLElement {
@@ -33,7 +34,13 @@ export function initLightGallery(): void {
   }
   
   // 初始化LightGallery
-  galleryContainer.lightGalleryInstance = window.lightGallery(galleryContainer, {
+  const lg = (window.lightGallery || window.lightgallery);
+  if (!lg) {
+    console.warn('[LightGallery] 未能在 window 中找到 LightGallery。请确认已从 node_modules 正确导入 JS。');
+    return;
+  }
+
+  galleryContainer.lightGalleryInstance = lg(galleryContainer, {
     selector: SITE.imageConfig.lightGallery.selector,
     subHtmlSelectorRelative: SITE.imageConfig.lightGallery.subHtmlSelectorRelative,
     mousewheel: SITE.imageConfig.lightGallery.mousewheel,

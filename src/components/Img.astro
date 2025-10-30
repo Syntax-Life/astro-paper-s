@@ -134,12 +134,17 @@ const exifUrl = exif ? generateExifUrl(finalSrc) : undefined;
 </figure>
 
 <script>
+  // Import LightGallery styles & UMD scripts from local node_modules
+  import 'lightgallery.js/src/css/lightgallery.css';
+  import 'lightgallery.js/src/css/lg-transitions.css';
+  import 'lightgallery.js/lib/js/lg-utils.js';
+  import 'lightgallery.js/lib/js/lightgallery.js';
+
+  // Project utilities
   import '@/utils/lightGallery';
   import '@/utils/images';
+  
 </script>
-
-<link rel="stylesheet" href="https://cos.lhasa.icu/dist/lightgalleryjs/lightgallery.min.css" />
-<script is:inline src="https://cos.lhasa.icu/dist/lightgalleryjs/lightgallery.min.js"></script>
 
 <style>
   @reference "tailwindcss";
