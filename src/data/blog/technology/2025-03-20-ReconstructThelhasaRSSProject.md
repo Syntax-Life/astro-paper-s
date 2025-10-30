@@ -330,38 +330,34 @@ for _, rssLink := range rssLinks {
 
 如果你也想玩玩 LhasaRSS
 
-1.  **准备一份 RSS 列表**（TXT）:
+1. **准备一份 RSS 列表**（TXT）:
 
-        格式：每行一个 URL<br/>
-        如果 RSS_SOURCE = GITHUB，则可以放在项目中的 data/rss.txt<br/>
-        如果 RSS_SOURCE = COS，就把它上传到某个 https://xxx.cos.ap-xxx.myqcloud.com/rss.txt
-
-    <br/><br/>
+格式：每行一个 URL<br/>
+如果 RSS_SOURCE = GITHUB，则可以放在项目中的 data/rss.txt<br/>
+如果 RSS_SOURCE = COS，就把它上传到某个 https://xxx.cos.ap-xxx.myqcloud.com/rss.txt
 
 2.  **配置好环境变量**:
 
-        默认所有数据保存到 Github，所以 COS API 环境变量不是必要的
+默认所有数据保存到 Github，所以 COS API 环境变量不是必要的
 
-    {% raw %}
-    `yml
-    env:
-        TOKEN:                    ${{ secrets.TOKEN }}                    # GitHub Token
-        NAME:                     ${{ secrets.NAME }}                     # GitHub 用户名
-        REPOSITORY:               ${{ secrets.REPOSITORY }}               # GitHub 仓库名
-        TENCENT_CLOUD_SECRET_ID:  ${{ secrets.TENCENT_CLOUD_SECRET_ID }}  # 腾讯云 COS SecretID
-        TENCENT_CLOUD_SECRET_KEY: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }} # 腾讯云 COS SecretKey
-        RSS:                      ${{ secrets.RSS }}                      # RSS 列表文件
-        DATA:                     ${{ secrets.DATA }}                     # 抓取后的数据文件
-        DEFAULT_AVATAR:           ${{ secrets.DEFAULT_AVATAR }}           # 默认头像 URL
-        RSS_SOURCE                ${{ secrets.RSS_SOURCE }}               # 可选参数 GITHUB or COS
-        SAVE_TARGET               ${{ secrets.SAVE_TARGET }}              # 可选参数 GITHUB or COS
-    `
-    {% endraw %}<br/>
+```bash
+env:
+	TOKEN:                    ${{ secrets.TOKEN }}                    # GitHub Token
+	NAME:                     ${{ secrets.NAME }}                     # GitHub 用户名
+	REPOSITORY:               ${{ secrets.REPOSITORY }}               # GitHub 仓库名
+	TENCENT_CLOUD_SECRET_ID:  ${{ secrets.TENCENT_CLOUD_SECRET_ID }}  # 腾讯云 COS SecretID
+	TENCENT_CLOUD_SECRET_KEY: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }} # 腾讯云 COS SecretKey
+	RSS:                      ${{ secrets.RSS }}                      # RSS 列表文件
+	DATA:                     ${{ secrets.DATA }}                     # 抓取后的数据文件
+	DEFAULT_AVATAR:           ${{ secrets.DEFAULT_AVATAR }}           # 默认头像 URL
+	RSS_SOURCE                ${{ secrets.RSS_SOURCE }}               # 可选参数 GITHUB or COS
+	SAVE_TARGET               ${{ secrets.SAVE_TARGET }}              # 可选参数 GITHUB or COS
+```
 
 3.  **部署并运行**
 
-    只需 go run . 或在 GitHub Actions workflow_dispatch 触发
-    运行结束后，就会在 data 文件夹更新 data.json，日志则写进 GitHub logs/ 目录，并且自动清理旧日志
+只需 go run . 或在 GitHub Actions workflow_dispatch 触发
+运行结束后，就会在 data 文件夹更新 data.json，日志则写进 GitHub logs/ 目录，并且自动清理旧日志
 
 注：如果你依旧想完全托管在 COS 上，需要把 RSS_SOURCE 和 SAVE_TARGET 都写为 COS，然后使用 GitHub Actions 去调度
 

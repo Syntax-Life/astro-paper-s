@@ -20,7 +20,8 @@ export function initLightbox() {
     touchNavigation: true,
     loop: false,
     zoomable: true,
-    autoplayVideos: true
+    autoplayVideos: true,
+    preload: true,
   });
 
   // 每次页面切换后确保选择器能扫到新节点
