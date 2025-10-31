@@ -12,3 +12,7 @@ html.glightbox-open,
 body.glightbox-open {
   overflow: auto !important;
 }
+
+.gslide-desc {
+  color: #23272e;
+}
