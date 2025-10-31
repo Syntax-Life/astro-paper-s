@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "关于"
 ---
 
 自 <span id="start-year" class="font-bold text-accent">0</span> 年 <span id="start-month" class="font-bold text-accent">0</span> 月 <span id="start-day" class="font-bold text-accent">0</span> 日起，本站已运行 <span id="running-days" class="font-bold text-accent">0</span> 天，截至到今天，共写了博文 <span id="total-posts" class="font-bold text-accent">0</span> 篇，计 <span id="total-words" class="font-bold text-accent">0.0</span> 万字。
@@ -37,8 +37,6 @@ title: "About"
 
 本博客前端源码基于 <a href="https://github.com/satnaing/astro-paper" target="_blank" rel="noopener noreferrer">astro-paper</a> 项目构建，遵循 MIT License 发布：
 
-> Copyright (c) 2023 Sat Naing  
-> 本软件可自由使用、复制、修改、分发，前提是保留原始版权声明。  
-> 软件按“原样”提供，不附带任何明示或暗示的担保。
+> Copyright (c) 2023 Sat Naing 本软件可自由使用、复制、修改、分发，前提是保留原始版权声明。软件按“原样”提供，不附带任何明示或暗示的担保。
 
 > <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans" target="_blank" rel="noopener noreferrer">CC BY-NC-ND 4.0 国际许可协议</a>，转载请务必注明出处，禁止商用及修改。

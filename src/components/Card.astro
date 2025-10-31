@@ -53,7 +53,7 @@ const { showSubtitle, showDescription, showTags } = SITE.displayOptions;
     {showDescription && <p class="mb-1 text-sm">{description || fallbackDesc}</p>}
 
     <div class="flex flex-col flex-wrap space-y-2 md:flex-row md:space-y-0">
-      <div class="mr-4 flex items-center space-x-0.5">
+      <div class="mr-1 flex items-center space-x-0.5">
         <Datetime
           pubDatetime={date}
           modDatetime={updated}
@@ -63,19 +63,19 @@ const { showSubtitle, showDescription, showTags } = SITE.displayOptions;
       </div>
       {
         categories.length > 0 && (
-          <div class="mr-4 flex items-center space-x-0.5 opacity-80">
-            <IconCategory class="mt-0.5 h-4 w-4" />
-            <span class="text-sm">{categories}</span>
+          <div class="mr-1 flex items-center space-x-0.5 opacity-80">
+            <IconCategory class="mt-0.5 h-3 w-3" />
+            <span class="text-xs">{categories}</span>
           </div>
         )
       }
       {
         showTags && tags.length > 0 && (
           <div class="flex items-center space-x-0.5 opacity-80">
-            <IconTag class="mt-0.5 h-4 w-4" />
+            <IconTag class="mt-0.5 h-3 w-3" />
             <div class="flex flex-wrap">
               {tags.map((tag: string) => (
-                <p class="mr-2 text-sm">#{tag}</p>
+                <p class="mr-2 text-xs">#{tag}</p>
               ))}
             </div>
           </div>
