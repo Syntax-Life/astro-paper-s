@@ -63,6 +63,7 @@ const en = {
   license: {
     copyright: "Copyright",
     statement: "All rights reserved",
+    icp: "",
   },
   common: {
     backToTop: "Back to Top",

@@ -30,6 +30,7 @@ import 'plyr/dist/plyr.css';
   import Plyr from 'plyr';
 
   class AstroPlyr extends HTMLElement {
+    private _player: Plyr | undefined;
     connectedCallback() {
       // 只在当前实例中查找，避免多实例冲突
       const video = this.querySelector('video');
