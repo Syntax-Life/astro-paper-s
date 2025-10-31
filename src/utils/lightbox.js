@@ -19,7 +19,7 @@ export function initLightbox() {
     selector: 'a.glightbox',
     touchNavigation: true,
     loop: false,
-    zoomable: true,
+    zoomable: false,
     autoplayVideos: true,
     preload: true,
   });

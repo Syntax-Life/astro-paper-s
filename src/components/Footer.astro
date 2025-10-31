@@ -20,9 +20,40 @@ const { noMarginTop = false } = Astro.props;
   >
     {SITE.displayOptions.showFooterSocialLinks && <Socials centered />}
     <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
-      <span>{_t.license.copyright} &#169; {currentYear}</span>
-      <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
-      <span>{_t.license.statement}</span>
+      {SITE.displayOptions.showCopyright && (
+        <>
+          <span>{_t.license.copyright} &#169; {currentYear}</span>
+        </>
+      )}
+      {SITE.displayOptions.showCopyright && SITE.displayOptions.showStatement && (
+        <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
+      )}
+      {SITE.displayOptions.showStatement && (
+        <>
+          <span>{_t.license.statement}</span>
+        </>
+      )}
+
+      {SITE.customFooterLink.enabled && (
+        <a href={SITE.customFooterLink.url} target="_blank">
+          {SITE.customFooterLink.text}
+        </a>
+      )}
+
+      {(SITE.displayOptions.showCopyright ||
+      SITE.displayOptions.showStatement ||
+      SITE.icp) &&
+      SITE.customFooterLink.enabled && (
+        <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
+      )}
+
+      {(SITE.displayOptions.showCopyright || SITE.displayOptions.showStatement) &&
+        SITE.icp && <span class="hidden sm:inline">&nbsp;|&nbsp;</span>}
+      {SITE.icp && (
+        <a href="https://beian.miit.gov.cn/" target="_blank">
+          {_t.license.icp} {SITE.icp}
+        </a>
+      )}
     </div>
   </div>
 </footer>

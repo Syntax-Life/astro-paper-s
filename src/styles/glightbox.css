@@ -3,6 +3,12 @@
   padding: 5px 5px !important;
   margin-left: 10px;
 }
-.zoomable {
+
+.gslide-image img {
   max-height: calc(100vh - 60px) !important;
+}
+
+html.glightbox-open,
+body.glightbox-open {
+  overflow: auto !important;
 }

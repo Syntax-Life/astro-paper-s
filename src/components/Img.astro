@@ -112,9 +112,11 @@ const galleryName = getFrontmatterSlug() ?? 'images';
       href={finalSrc}
       class="glightbox"
       data-gallery={galleryName}
-      data-description={alt}
-      data-desc-merged="0"
-      data-desc-position="bottom"
+      {...(alt && alt.trim() ? {
+        'data-description': alt,
+        'data-desc-position': 'bottom',
+        'data-desc-merged': '0'
+      } : {})}
       data-type="image"
        >
       <img 

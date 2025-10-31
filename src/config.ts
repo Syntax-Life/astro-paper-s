@@ -25,6 +25,7 @@ export const SITE = {
   langOg: "zh_CN", // Open Graph locale tag, format 'language_TERRITORY' https://ogp.me/#optional
   timezone: "Asia/Taipei", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   wontonCommentUrl: "", // Wonton comment server URL, set to empty string to disable comment
+  icp: "豫ICP备2024046152号-1", // Chinese ICP license number
   
   // Display control options for article cards
   displayOptions: {
@@ -34,6 +35,13 @@ export const SITE = {
     showHeaderSocialLinks: false, // Show social links in header/main content area
     showFooterSocialLinks: true, // Show social links in footer
     showDate: false, // Show date in article pages
+    showCopyright: false, // Show copyright in footer
+    showStatement: false, // Show statement in footer
+  },
+  customFooterLink: {
+    enabled: true,
+    text: "Umami",
+    url: "https://umami.lhasa.icu/share/lOlDwnGtk7wyfM4T/lhasa.icu",
   },
   
 // 图片组件配置

@@ -132,6 +132,7 @@ const zhCN: typeof en = {
   license: {
     copyright: "版权所有",
     statement: "保留所有权利",
+    icp: "",
   },
   common: {
     backToTop: "回到顶部",

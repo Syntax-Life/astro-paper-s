@@ -152,3 +152,52 @@ html[data-theme="dark"] {
     @apply mt-2 mb-4;
   }
 }
+
+/* ===== Ultra-thin scrollbar enhancement (no color change) ===== */
+
+/* Firefox */
+* {
+  scrollbar-width: thin; /* thinner than default */
+}
+
+/* WebKit (Chrome, Edge, Safari, Opera) */
+*::-webkit-scrollbar {
+  width: 3px;   /* from 6px → 3px: extremely thin */
+  height: 3px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-clip: padding-box;
+  border: 1px solid transparent; /* smaller border for narrow bar */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Optional: touch devices slightly wider for usability */
+@media (pointer: coarse) {
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* 细滚动条 WebKit */
+.expressive-code pre::-webkit-scrollbar {
+  width: 3px !important;
+  height: 3px!important;
+}
+.expressive-code pre::-webkit-scrollbar-thumb {
+  border-radius: 3px!important;
+}
+
+/* Firefox */
+.expressive-code pre {
+  scrollbar-width: thin!important;
+}
