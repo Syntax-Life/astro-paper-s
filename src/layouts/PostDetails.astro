@@ -252,7 +252,7 @@ const nextPost =
   </main>
 
   <!-- Sidebar -->
-  <aside id="sidebar" class="sidebar">
+  <aside id="sidebar" class:list={["sidebar", { "no-toc": !toc }]}>
     {
       toc && (
         <>
@@ -330,7 +330,7 @@ const nextPost =
     } else {
       const script = document.createElement("script");
       script.src =
-        "https://cos.lhasa.icu/dist/tocbot/tocbot.min.js";
+        "/tocbot/tocbot.min.js";
       script.integrity =
         "sha512-+9XzRSJjnUN2OI106uAbbVZ3f+z1ncIRZFOr56hEdaxbQeZ8i1+B7OVjdF8tG4YhgxM/rWP73K2SiG93x6UJoQ==";
       script.crossOrigin = "anonymous";

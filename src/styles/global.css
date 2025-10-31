@@ -99,6 +99,11 @@ html[data-theme="dark"] {
       @apply top-36 right-10 m-2 max-h-[calc(100vh-12rem)] w-32 translate-x-0 rounded-none bg-transparent p-0 shadow-none;
     }
 
+    /* When there's no TOC, position the sidebar lower */
+    #sidebar.no-toc {
+      @apply top-150;
+    }
+
     /* xl breakpoint */
     @media (min-width: 1280px) {
       #sidebar {
