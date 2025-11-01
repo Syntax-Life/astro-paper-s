@@ -41,7 +41,7 @@ export const SITE = {
   customFooterLink: {
     enabled: true,
     text: "Umami",
-    url: "https://umami.lhasa.icu/share/lOlDwnGtk7wyfM4T/lhasa.icu",
+    url: "https://umami.lhasa.icu/share/lOlDwnGtk7wyfM4T/blog.lhasa.icu",
   },
   
 // 图片组件配置
