@@ -40,7 +40,7 @@ export const SITE = {
     showStatement: false, // Show statement in footer
   },
   customFooterLink: {
-    enabled: true,
+    enabled: false,
     text: "Umami",
     url: "https://umami.lhasa.icu/share/lOlDwnGtk7wyfM4T/blog.lhasa.icu",
   },
