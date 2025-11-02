@@ -32,7 +32,7 @@ const headerProps = {
 };
 
 // Get display options from config
-const { showSubtitle, showDescription, showTags } = SITE.displayOptions;
+const { showSubtitle, showDescription, showCategories, showTags } = SITE.displayOptions;
 ---
 
 <li class="my-4">
@@ -62,7 +62,7 @@ const { showSubtitle, showDescription, showTags } = SITE.displayOptions;
         />
       </div>
       {
-        categories.length > 0 && (
+        showCategories && categories.length > 0 && (
           <div class="mr-1 flex items-center space-x-0.5 opacity-80">
             <IconCategory class="mt-0.5 h-3 w-3" />
             <span class="text-xs">{categories}</span>

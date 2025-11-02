@@ -31,6 +31,9 @@ export interface Props {
 const { slug } = Astro.params;
 const { post, posts } = Astro.props;
 
+// Get display options from config
+const { showCategories } = SITE.displayOptions;
+
 const {
   title,
   subtitle,
@@ -116,7 +119,7 @@ const nextPost =
     <ul class="my-1 flex flex-col flex-wrap space-y-2 md:flex-row md:space-y-0">
       <!-- categories -->
       {
-        categories.length > 0 && (
+        showCategories && categories.length > 0 && (
           <li class="mr-4 flex items-center space-x-0.5 opacity-80">
             <IconCategory class="mt-0.5 h-4 w-4" />
             {categories.map((cat: string) => (
