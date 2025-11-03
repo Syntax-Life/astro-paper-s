@@ -18,6 +18,7 @@ import expressiveCode, {
   type AstroExpressiveCodeOptions,
 } from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import compressor from "astro-compressor";
 import { minify } from "@zokki/astro-minify";
 
@@ -30,7 +31,7 @@ const modMinLightTheme = ExpressiveCodeTheme.fromJSONString(themeJsoncString);
 
 // Expressive Code syntax highlighting, https://expressive-code.com/reference/configuration/
 const expressiveCodeOption: AstroExpressiveCodeOptions = {
-  plugins: [pluginLineNumbers()],
+  plugins: [pluginLineNumbers(), pluginCollapsibleSections()],
   themes: ["one-dark-pro", modMinLightTheme],
   themeCssSelector: theme => {
     if (theme.name === "one-dark-pro") {
