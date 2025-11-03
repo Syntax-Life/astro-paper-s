@@ -180,8 +180,11 @@ function cleanupAutoTheme() {
   if (systemThemeMql && systemThemeListener) {
     if (typeof systemThemeMql.removeEventListener === "function") {
       systemThemeMql.removeEventListener("change", systemThemeListener);
-    } else if (typeof systemThemeMql.removeListener === "function") {
-      systemThemeMql.removeListener(systemThemeListener);
+    } else {
+      const legacy = /** @type {any} */ (systemThemeMql);
+      if (typeof legacy.removeListener === "function") {
+        legacy.removeListener(systemThemeListener);
+      }
     }
     systemThemeListener = null;
     systemThemeMql = null;
@@ -211,8 +214,11 @@ function setupAutoTheme() {
     
     if (typeof systemThemeMql.addEventListener === "function") {
       systemThemeMql.addEventListener("change", systemThemeListener);
-    } else if (typeof systemThemeMql.addListener === "function") {
-      systemThemeMql.addListener(systemThemeListener);
+    } else {
+      const legacy = /** @type {any} */ (systemThemeMql);
+      if (typeof legacy.addListener === "function") {
+        legacy.addListener(systemThemeListener);
+      }
     }
   }
 }

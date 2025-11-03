@@ -32,7 +32,7 @@ const headerProps = {
 };
 
 // Get display options from config
-const { showSubtitle, showDescription, showCategories, showTags } = SITE.displayOptions;
+const { showSubtitle, showDescription, showCategories, showTags, showCommentCount } = SITE.displayOptions;
 ---
 
 <li class="my-4">
@@ -52,7 +52,7 @@ const { showSubtitle, showDescription, showCategories, showTags } = SITE.display
 
     {showDescription && <p class="mb-1 text-sm">{description || fallbackDesc}</p>}
 
-    <div class="flex flex-col flex-wrap space-y-2 md:flex-row md:space-y-0">
+    <div class="flex flex-row flex-nowrap items-center space-x-2 whitespace-nowrap">
       <div class="mr-1 flex items-center space-x-0.5">
         <Datetime
           pubDatetime={date}
@@ -77,6 +77,18 @@ const { showSubtitle, showDescription, showCategories, showTags } = SITE.display
               {tags.map((tag: string) => (
                 <p class="mr-2 text-xs">#{tag}</p>
               ))}
+            </div>
+          </div>
+        )
+      }
+
+      {
+        showCommentCount && (
+          <div class="flex items-center space-x-0.5 opacity-80">
+            <div class="flex flex-wrap">
+              <p class="mr-2 text-xs">
+                · Comments <span class="artalk-comment-count" data-page-key={getPath(id, filePath)}></span>
+              </p>
             </div>
           </div>
         )

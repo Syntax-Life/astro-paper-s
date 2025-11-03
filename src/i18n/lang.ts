@@ -13,6 +13,10 @@ const en = {
     title: "Posts",
     desc: "All the articles I've posted.",
   },
+  feeds: {
+    title: "Feeds",
+    desc: "All blogs I subscribe to.",
+  },
   tags: {
     title: "Tags",
     desc: "All the tags used in posts.",
@@ -86,6 +90,10 @@ const zhCN: typeof en = {
     title: "日志",
     desc: "我发过的所有日志。",
   },
+  feeds: {
+    title: "逛逛",
+    desc: "我订阅的所有博客",
+  },
   tags: {
     title: "标签",
     desc: "日志中使用的所有标签。",
@@ -118,16 +126,16 @@ const zhCN: typeof en = {
   },
   date: {
     shortFormat(datetime: dayjs.Dayjs): string {
-      return datetime.format("YYYY年MM月DD日");
+      return datetime.format("MMM D, YYYY");
     },
     fullFormat(datetime: dayjs.Dayjs): string {
-      return datetime.format("YYYY年MM月DD日 HH:mm");
+      return datetime.format("MMMM D, YYYY hh:mm A");
     },
     published(strDate: string): string {
-      return `发布于 ${strDate}`;
+      return `Published: ${strDate}`;
     },
     updated(strDate: string): string {
-      return `更新于 ${strDate}`;
+      return `Updated: ${strDate}`;
     },
   },
   pagination: {
@@ -143,8 +151,8 @@ const zhCN: typeof en = {
     backToTop: "回到顶部",
     themeBtn: "切换深色模式",
     allPosts: "所有日志",
-    featuredPosts: "精选日志",
-    recentPosts: "最新日志",
+    featuredPosts: "Set Top",
+    recentPosts: "New",
   },
 };
 

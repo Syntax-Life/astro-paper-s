@@ -202,14 +202,26 @@ const structuredData = {
         />
       )
     }
-
-
   </head>
   <body>
     <slot />
   </body>
 </html>
 
+<script is:inline>
+document.addEventListener('astro:after-swap', tryLoad);
+document.addEventListener('DOMContentLoaded', tryLoad);
+function tryLoad() {
+  const els = document.querySelectorAll('.artalk-comment-count');
+  if (!els.length || typeof Artalk === 'undefined') return;
+  Artalk.loadCountWidget({
+    server: 'https://artalk.lhasa.icu',
+    site: '游钓四方的博客',
+    countEl: '.artalk-comment-count',
+    statPageKeyAttr: 'data-page-key',
+  });
+  }
+</script>
 <style>
   html,
   body {

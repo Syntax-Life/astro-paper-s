@@ -7,9 +7,9 @@ export interface Props {
 }
 
 function formatDate(date: string | Date) {
-  return new Date(date).toLocaleDateString("en-CA", {
+  return new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
-    month: "numeric",
+    month: "short",
     day: "numeric",
   });
 }
@@ -23,7 +23,7 @@ const { title, date, updated } = frontmatter;
     href={href}
     class="flex flex-col space-x-4 rounded-md p-2 hover:bg-foreground/5 sm:flex-row"
   >
-    <span class="mr-4 text-accent/80">
+    <span class="mr-4 text-accent/80 w-24">
       {formatDate(updated ?? date)}
     </span>
     <span class="truncate overflow-hidden whitespace-nowrap">

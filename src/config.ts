@@ -32,7 +32,8 @@ export const SITE = {
     showSubtitle: false, // Show subtitle in article cards
     showDescription: false, // Show description in article cards  
     showCategories: false, // Show categories in article cards
-    showTags: true, // Show tags in article cards
+    showTags: false, // Show tags in article cards
+    showCommentCount: true, // Show comment count in article cards
     showHeaderSocialLinks: false, // Show social links in header/main content area
     showFooterSocialLinks: true, // Show social links in footer
     showDate: false, // Show date in article pages
