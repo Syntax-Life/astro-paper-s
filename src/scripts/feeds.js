@@ -80,10 +80,9 @@ function createFeedCardHTML(item, siteTimezone, fallbackOgImageGlobal) {
             <time class="text-accent whitespace-nowrap" datetime="${isoTimestamp}">
               ${displayDate}
             </time>
-            ${displayTime ? `
-              <span aria-hidden="true"> | </span>
-              <span class="sr-only">&nbsp;at&nbsp;</span>
-              <span class="whitespace-nowrap">${displayTime}</span>
+            <span class="text-accent" aria-hidden="true"> - </span>
+            ${item.blog_name ? `
+              <span class="text-accent truncate min-w-0 flex-1">${item.blog_name}</span>
             ` : ''}
           </div>
         </div>
