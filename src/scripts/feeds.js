@@ -73,16 +73,16 @@ function createFeedCardHTML(item, siteTimezone, fallbackOgImageGlobal) {
           />
         ` : ''}
         <div class="min-w-0">
-          <h3 class="text-lg font-medium truncate">${item.title}</h3>
+          <h3 class="text-accent font-medium truncate">${item.title}</h3>
 
           <div class="mt-1 flex items-center gap-x-2 opacity-80 text-xs">
             <span class="sr-only">Published:</span>
-            <time class="text-accent whitespace-nowrap" datetime="${isoTimestamp}">
+            <time class=" whitespace-nowrap" datetime="${isoTimestamp}">
               ${displayDate}
             </time>
-            <span class="text-accent" aria-hidden="true"> - </span>
+            <span class="" aria-hidden="true"> - </span>
             ${item.blog_name ? `
-              <span class="text-accent truncate min-w-0 flex-1">${item.blog_name}</span>
+              <span class=" truncate min-w-0 flex-1">${item.blog_name}</span>
             ` : ''}
           </div>
         </div>
