@@ -1,5 +1,5 @@
 export const SITE = {
-  website: "https://lhasa.icu",
+  website: "https://blog.lhasa.icu",
   author: "lhasa",
   profile: "https://github.com/achuanya",
   desc: "骑过湖边的小径，走过文字里的角落，偶尔停下，看见风，也看见自己",
