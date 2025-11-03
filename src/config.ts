@@ -40,9 +40,9 @@ export const SITE = {
     showStatement: false, // Show statement in footer
   },
   customFooterLink: {
-    enabled: false,
-    text: "Umami",
-    url: "https://umami.lhasa.icu/share/lOlDwnGtk7wyfM4T/blog.lhasa.icu",
+    enabled: true,
+    text: "Stats",
+    url: "https://stats.lhasa.icu/blog.lhasa.icu",
   },
   
 // 图片组件配置
