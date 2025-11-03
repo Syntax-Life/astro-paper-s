@@ -38,9 +38,11 @@ const en = {
     desc: "Search any article ...",
   },
   notFoundPage: {
-    title: "Page Not Found",
+    title: "You seem to have come to a wasteland where there is no knowledge.",
     toHome: "Go back home",
     toSearch: "Try searching",
+    images: "https://cos.lhasa.icu/StylePictures/404.gif",
+    staticImages: "https://cos.lhasa.icu/StylePictures/404.webp",
   },
   date: {
     shortFormat(datetime: dayjs.Dayjs): string {
@@ -108,9 +110,11 @@ const zhCN: typeof en = {
     desc: "搜索日志 ...",
   },
   notFoundPage: {
-    title: "页面不存在",
-    toHome: "回到首页",
-    toSearch: "尝试搜索",
+    title: "你似乎来到了没有知识存在的荒原",
+    toHome: "Go back home",
+    toSearch: "Try searching",
+    images: "https://cos.lhasa.icu/StylePictures/404.gif",
+    staticImages: "https://cos.lhasa.icu/StylePictures/404.webp",
   },
   date: {
     shortFormat(datetime: dayjs.Dayjs): string {

@@ -1,76 +1,260 @@
-const primaryColorScheme = ""; // "light" | "dark"
+// 主题切换系
+// 1. 支持基于时间的自动主题切换（夜间自动切换到深色主题）
+// 2. 支持用户手动设置主题（当天有效，次日重新启用自动切换）
+// 3. 支持系统主题偏好检测
+// 4. 完整的错误处理和调试功能
 
-// Get theme data from local storage
-const currentTheme = localStorage.getItem("theme");
+const primaryColorScheme = "";
+
+// 调试模式配置
+const DEBUG_THEME = false;
+
+const __memoryStore = new Map();
+
+function safeGet(key) {
+  try { return localStorage.getItem(key); } catch { return __memoryStore.get(key) ?? null; }
+}
+function safeSet(key, value) {
+  try { localStorage.setItem(key, value); } catch { __memoryStore.set(key, value); }
+}
+function safeRemove(key) {
+  try { localStorage.removeItem(key); } catch { __memoryStore.delete(key); }
+}
+function normalizeTheme(v) {
+  return v === "dark" ? "dark" : (v === "light" ? "light" : null);
+}
+// =======================================================================
+
+function debugLog(message, ...args) {
+  if (DEBUG_THEME) {
+    console.log(`[Theme Debug] ${message}`, ...args);
+  }
+}
+
+function handleThemeError(error, context) {
+  console.error(`[Theme Error] ${context}:`, error);
+  try {
+    reflectPreference();
+  } catch (e) {
+    console.error("[Theme Error] 无法恢复主题状态:", e);
+  }
+}
+
+let autoThemeTimer = null;        // 自动主题检查定时器
+let systemThemeListener = null;   // 系统主题变化监听器
+let systemThemeMql = null;        // 重要 BUG 修复：缓存同一 MediaQueryList 实例
+
+function getCurrentThemeFromStorage() {
+  return normalizeTheme(safeGet("theme"));
+}
+
+function getUserManuallySetTheme() {
+  return safeGet("userSetTheme") === "true";
+}
+
+function getUserSetThemeDate() {
+  return safeGet("userSetThemeDate");
+}
+
+function shouldUseDarkThemeByTime() {
+  try {
+    const now = new Date();
+    const shanghaiTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Shanghai"}));
+    const hour = shanghaiTime.getHours();
+    return hour >= 18 || hour < 7;
+  } catch (error) {
+    console.warn("时区转换失败，使用本地时间:", error);
+    const now = new Date();
+    const hour = now.getHours();
+    return hour >= 18 || hour < 7;
+  }
+}
+
+function getTodayDateString() {
+  try {
+    const now = new Date();
+    const shanghaiTime = new Date(now.toLocaleString("en-US", {timeZone: "Asia/Shanghai"}));
+    return shanghaiTime.getFullYear() + '-' + 
+           String(shanghaiTime.getMonth() + 1).padStart(2, '0') + '-' + 
+           String(shanghaiTime.getDate()).padStart(2, '0');
+  } catch (error) {
+    console.warn("时区转换失败，使用本地时间:", error);
+    const today = new Date();
+    return today.getFullYear() + '-' + 
+           String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+           String(today.getDate()).padStart(2, '0');
+  }
+}
+
+function isUserPreferenceValidToday() {
+  if (!getUserManuallySetTheme()) return false;
+  
+  const today = getTodayDateString();
+  const setDate = getUserSetThemeDate();
+  
+  if (setDate !== today) {
+    safeRemove("userSetTheme");
+    safeRemove("userSetThemeDate");
+    console.log("用户主题设置已过期，重新启用自动切换");
+    return false;
+  }
+  
+  return true;
+}
 
 function getPreferTheme() {
-  // return theme value in local storage if it is set
-  if (currentTheme) return currentTheme;
+  try {
+    const currentTheme = getCurrentThemeFromStorage();
+    
+    debugLog("获取主题偏好", {
+      currentTheme,
+      isValidToday: isUserPreferenceValidToday(),
+      shouldUseDark: shouldUseDarkThemeByTime(),
+      primaryScheme: primaryColorScheme
+    });
+    
+    if (isUserPreferenceValidToday() && currentTheme) {
+      debugLog("使用用户手动设置:", currentTheme);
+      return currentTheme;
+    }
 
-  // return primary color scheme if it is set
-  if (primaryColorScheme) return primaryColorScheme;
+    if (shouldUseDarkThemeByTime()) {
+      debugLog("使用时间自动切换: dark");
+      return "dark";
+    }
 
-  // return user device's prefer color scheme
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+    if (primaryColorScheme) {
+      debugLog("使用主题方案设置:", primaryColorScheme);
+      return primaryColorScheme;
+    }
+
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const systemTheme = systemDark ? "dark" : "light";
+    debugLog("使用系统偏好:", systemTheme);
+    return systemTheme;
+  } catch (error) {
+    handleThemeError(error, "getPreferTheme");
+    return "light";
+  }
 }
 
 let themeValue = getPreferTheme();
 
-function setPreference() {
-  localStorage.setItem("theme", themeValue);
-  reflectPreference();
+function setPreference(userManualSet = false) {
+  try {
+    safeSet("theme", themeValue);
+    if (userManualSet) {
+      safeSet("userSetTheme", "true");
+      safeSet("userSetThemeDate", getTodayDateString());
+      console.log(`用户手动设置主题为: ${themeValue}，当天有效`);
+      debugLog("用户手动设置主题", { theme: themeValue, date: getTodayDateString() });
+    } else {
+      debugLog("自动设置主题", { theme: themeValue });
+    }
+    
+    reflectPreference();
+  } catch (error) {
+    handleThemeError(error, "setPreference");
+  }
 }
 
 function reflectPreference() {
   document.firstElementChild.setAttribute("data-theme", themeValue);
-
   document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue);
-
-  // Get a reference to the body element
   const body = document.body;
-
-  // Check if the body element exists before using getComputedStyle
   if (body) {
-    // Get the computed styles for the body element
     const computedStyles = window.getComputedStyle(body);
-
-    // Get the background color property
     const bgColor = computedStyles.backgroundColor;
-
-    // Set the background color in <meta theme-color ... />
     document
       .querySelector("meta[name='theme-color']")
       ?.setAttribute("content", bgColor);
   }
 }
 
-// set early so no page flashes / CSS is made aware
+function cleanupAutoTheme() {
+  if (autoThemeTimer) {
+    clearInterval(autoThemeTimer);
+    autoThemeTimer = null;
+  }
+  
+  if (systemThemeMql && systemThemeListener) {
+    if (typeof systemThemeMql.removeEventListener === "function") {
+      systemThemeMql.removeEventListener("change", systemThemeListener);
+    } else if (typeof systemThemeMql.removeListener === "function") {
+      systemThemeMql.removeListener(systemThemeListener);
+    }
+    systemThemeListener = null;
+    systemThemeMql = null;
+  }
+}
+
+function setupAutoTheme() {
+  cleanupAutoTheme();
+  
+  if (!isUserPreferenceValidToday()) {
+    const autoThemeChecker = () => {
+      themeValue = getPreferTheme();
+      reflectPreference();
+    };
+    
+    autoThemeChecker();
+    
+    autoThemeTimer = setInterval(autoThemeChecker, 60000);
+    
+    systemThemeMql = window.matchMedia("(prefers-color-scheme: dark)");
+    systemThemeListener = ({ matches: isDark }) => {
+      if (!isUserPreferenceValidToday() && !shouldUseDarkThemeByTime()) {
+        themeValue = isDark ? "dark" : "light";
+        setPreference(false);
+      }
+    };
+    
+    if (typeof systemThemeMql.addEventListener === "function") {
+      systemThemeMql.addEventListener("change", systemThemeListener);
+    } else if (typeof systemThemeMql.addListener === "function") {
+      systemThemeMql.addListener(systemThemeListener);
+    }
+  }
+}
+
 reflectPreference();
 
 window.onload = () => {
   function setThemeFeature() {
-    // set on load so screen readers can get the latest value on the button
     reflectPreference();
 
-    // now this script can find and listen for clicks on the control
-    document.querySelector("#theme-btn")?.addEventListener("click", () => {
+    const existingBtn = document.querySelector("#theme-btn");
+    if (existingBtn && existingBtn._themeClickHandler) {
+      existingBtn.removeEventListener("click", existingBtn._themeClickHandler);
+    }
+
+    const themeClickHandler = () => {
       themeValue = themeValue === "light" ? "dark" : "light";
-      setPreference();
-    });
+      setPreference(true);
+      
+      setupAutoTheme();
+    };
+
+    const themeBtn = document.querySelector("#theme-btn");
+    if (themeBtn) {
+      themeBtn._themeClickHandler = themeClickHandler;
+      themeBtn.addEventListener("click", themeClickHandler);
+    }
   }
 
   setThemeFeature();
 
-  // Runs on view transitions navigation
   document.addEventListener("astro:after-swap", setThemeFeature);
-};
 
-// sync with system changes
-window
-  .matchMedia("(prefers-color-scheme: dark)")
-  .addEventListener("change", ({ matches: isDark }) => {
-    themeValue = isDark ? "dark" : "light";
-    setPreference();
+  document.addEventListener("astro:before-swap", event => {
+    const bgColor = document
+      .querySelector("meta[name='theme-color']")
+      ?.getAttribute("content");
+
+    event.newDocument
+      .querySelector("meta[name='theme-color']")
+      ?.setAttribute("content", bgColor);
   });
+  
+  setupAutoTheme();
+};
