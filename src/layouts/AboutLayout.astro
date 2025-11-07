@@ -102,9 +102,48 @@ const blogStats = await getBlogMetrics();
     });
   }
 
+  // 渲染博客进程时间轴
+  function renderTimeline() {
+    const timeline = document.getElementById('blog-timeline');
+    const dataEl = document.getElementById('blog-timeline-data');
+
+    if (!timeline || !dataEl) return;
+    if (timeline.dataset.initialized === 'true') return;
+
+    try {
+      const events = JSON.parse(dataEl.textContent || '[]');
+      const frag = document.createDocumentFragment();
+
+      events.forEach(evt => {
+        const item = document.createElement('div');
+        item.className = 'relative pl-8';
+
+        const marker = document.createElement('span');
+        marker.className = 'absolute left-0 top-[6px] h-2 w-2 rounded-full bg-accent ring-2 ring-accent/30';
+
+        const date = document.createElement('div');
+        date.className = 'text-sm text-accent/85 font-medium';
+        date.textContent = evt.date;
+
+        const text = document.createElement('div');
+        text.className = 'mt-1 leading-relaxed dark:text-foreground';
+        text.textContent = evt.text;
+
+        item.append(marker, date, text);
+        frag.appendChild(item);
+      });
+
+      timeline.appendChild(frag);
+      timeline.dataset.initialized = 'true';
+    } catch (e) {
+      /* 忽略渲染错误 */
+    }
+  }
+
   function initializeAnimations() {
     setTimeout(() => {
       startAnimations();
+      renderTimeline();
     }, 300);
   }
 

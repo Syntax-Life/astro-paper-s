@@ -17,20 +17,30 @@ title: "关于"
 
 ## 博客进程
 
-- 2018-08-30：Fork 孔令贤的 Jekyll 模板，正式开始接触个人博客
-- 2018-08-31：博客由 Github Pages 托管，起名：阿川的个人博客
-- 2018-10-16：在 Dynadot 购买域名 achuan.io，并设置为博客域名（该域名于 2023-10-16 到期）
-- 2020-10-06：加入 Forever Blog，开启十年之约
-- 2024-01-22：因代码历史遗留问题，舍弃原有博客，Fork 了 Fooleap Blog
-- 2024-01-23：在 Tencent Cloud 购买新域名 lhasa.icu，并将博客更名为：游钓四方的博客
-- 2024-01-31：将 CSS、JS 和 Images 迁移至 Tencent Cloud COS，优化加载速度
-- 2024-01-31：完成域名备案，并通过 Tencent Cloud CDN 实现全球加速
-- 2024-02-06：引入 Disqus 评论系统，使用洛杉矶 VPS 和 Nginx 反向代理
-- 2024-02-11：使用 WebPack 对 CSS 和 JS 进行打包，字体进行分包处理，提升页面性能
-- 2024-07-22：通过 Tencent Cloud COS 套加 CDN 进一步加速国内访问
-- 2025-05-25：舍弃 Jekyll 架构，Fork Astro Paper，更新博客框架
-- 2025-05-25：将评论系统从 Disqus 迁移至 Artalk，提升响应速度
-- 2025-11-03：将博客域名从 lhasa.icu 改为 blog.lhasa.icu
+<div
+  id="blog-timeline"
+  class="mt-3 border-s border-border pl-6 space-y-4"
+  data-theme="auto"
+></div>
+
+<script type="application/json" id="blog-timeline-data">
+[
+  { "date": "2018-08-30", "text": "Fork 孔令贤的 Jekyll 模板，正式开始接触个人博客" },
+  { "date": "2018-08-31", "text": "博客由 Github Pages 托管，起名：阿川的个人博客" },
+  { "date": "2018-10-16", "text": "在 Dynadot 购买域名 achuan.io，并设置为博客域名（该域名于 2023-10-16 到期）" },
+  { "date": "2020-10-06", "text": "加入 Forever Blog，开启十年之约" },
+  { "date": "2024-01-22", "text": "因代码历史遗留问题，舍弃原有博客，Fork 了 Fooleap Blog" },
+  { "date": "2024-01-23", "text": "在 Tencent Cloud 购买新域名 lhasa.icu，并将博客更名为：游钓四方的博客" },
+  { "date": "2024-01-31", "text": "将 CSS、JS 和 Images 迁移至 Tencent Cloud COS，优化加载速度" },
+  { "date": "2024-01-31", "text": "完成域名备案，并通过 Tencent Cloud CDN 实现全球加速" },
+  { "date": "2024-02-06", "text": "引入 Disqus 评论系统，使用洛杉矶 VPS 和 Nginx 反向代理" },
+  { "date": "2024-02-11", "text": "使用 WebPack 对 CSS 和 JS 进行打包，字体进行分包处理，提升页面性能" },
+  { "date": "2024-07-22", "text": "通过 Tencent Cloud COS 套加 CDN 进一步加速国内访问" },
+  { "date": "2025-05-25", "text": "舍弃 Jekyll 架构，Fork Astro Paper，更新博客框架" },
+  { "date": "2025-05-25", "text": "将评论系统从 Disqus 迁移至 Artalk，提升响应速度" },
+  { "date": "2025-11-03", "text": "将博客域名从 lhasa.icu 改为 blog.lhasa.icu" }
+]
+</script>
 
 ## LICENSE
 
