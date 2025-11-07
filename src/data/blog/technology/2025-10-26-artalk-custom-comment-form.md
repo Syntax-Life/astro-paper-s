@@ -53,7 +53,7 @@ curl -o- https://cdn.jsdelivr.net/gh/nvm-sh/nvm@v0.39.7/install.sh | bash && exp
 
 1. 根目录执行 `pnpm i` 安装依赖
 2. 找到 `./conf/artalk.example.yml` 复制到根目录，重命名为 `artalk.yml`
-3. 运行 `make build-frontend` （把嵌入的前端主程序和侧边栏前端程序放入 `/public` 目录）
+3. 运行 `make build-frontend` （会把嵌入的前端主程序和侧边栏前端程序放入 `/public` 目录）
 4. 执行 `make build` 构建后端
 
 ```bash
@@ -67,11 +67,35 @@ go build \
 -rwxr-xr-x 1 lhasa lhasa 46M 10月 27 06:14 ./bin/artalk
 ```
 
-### 3. 后端初始化
+### 3.使用 PM2 持久化运行
 
-`./bin/artalk` 生成后，运行 `./bin/artalk admin` 创建管理员账号
+执行前，在根目录创建一个`data`目录，用于存储数据库文件
 
-如果你要修改，密码，输入原昵称、邮箱即可
+后端运行后，会在其中生成`artalk.db`文件
+
+```bash
+➜  Artalk-ui git:(master) pm2 start ./bin/artalk --name artalk -- server
+[PM2] Spawning PM2 daemon with pm2_home=/home/lhasa/.pm2
+[PM2] PM2 Successfully daemonized
+[PM2] Starting /home/lhasa/code/Artalk-ui/bin/artalk in fork_mode (1 instance)
+[PM2] Done.
+┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
+│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
+│ 0  │ artalk             │ fork     │ 0    │ online    │ 0%       │ 22.7mb   │
+└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
+➜  Artalk-ui git:(master) pm2 startup                         
+[PM2] Init System found: systemd
+[PM2] To setup the Startup Script, copy/paste the following command:
+sudo env PATH=$PATH:/home/lhasa/.nvm/versions/node/v22.21.0/bin /home/lhasa/.nvm/versions/node/v22.21.0/lib/node_modules/pm2/bin/pm2 startup systemd -u lhasa --hp /home/lhasa
+➜  Artalk-ui git:(master) pm2 save
+[PM2] Saving current process list...
+[PM2] Successfully saved in /home/lhasa/.pm2/dump.pm2
+```
+
+### 4. 创建管理员账号
+
+一定要先运行后端，然后再创建管理员账号，否则会丢失数据
 
 ```bash
 ➜  Artalk-ui git:(master) ./bin/artalk admin
@@ -108,30 +132,6 @@ Retype Password:
 |------|------|------|
 | `-c, --config <path>` | 指定配置文件路径（默认 `./artalk.yml`） | `./bin/artalk server -c /etc/artalk.yml` |
 | `-w, --workdir <dir>` | 指定工作目录（默认 `./`） | `./bin/artalk -w /var/www/artalk server` |
-
-### 4.使用 PM2 持久化运行
-
-到这里用什么都行，全凭个人喜好
-
-```bash
-➜  Artalk-ui git:(master) pm2 start ./bin/artalk --name artalk -- server
-[PM2] Spawning PM2 daemon with pm2_home=/home/lhasa/.pm2
-[PM2] PM2 Successfully daemonized
-[PM2] Starting /home/lhasa/code/Artalk-ui/bin/artalk in fork_mode (1 instance)
-[PM2] Done.
-┌────┬────────────────────┬──────────┬──────┬───────────┬──────────┬──────────┐
-│ id │ name               │ mode     │ ↺    │ status    │ cpu      │ memory   │
-├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼──────────┤
-│ 0  │ artalk             │ fork     │ 0    │ online    │ 0%       │ 22.7mb   │
-└────┴────────────────────┴──────────┴──────┴───────────┴──────────┴──────────┘
-➜  Artalk-ui git:(master) pm2 startup                         
-[PM2] Init System found: systemd
-[PM2] To setup the Startup Script, copy/paste the following command:
-sudo env PATH=$PATH:/home/lhasa/.nvm/versions/node/v22.21.0/bin /home/lhasa/.nvm/versions/node/v22.21.0/lib/node_modules/pm2/bin/pm2 startup systemd -u lhasa --hp /home/lhasa
-➜  Artalk-ui git:(master) pm2 save
-[PM2] Saving current process list...
-[PM2] Successfully saved in /home/lhasa/.pm2/dump.pm2
-```
 
 ### 5.集成到博客
 
