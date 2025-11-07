@@ -114,7 +114,7 @@ const blogStats = await getBlogMetrics();
       const events = JSON.parse(dataEl.textContent || '[]');
       const frag = document.createDocumentFragment();
 
-      events.forEach(evt => {
+      events.forEach((evt: { date: string; text: string }) => {
         const item = document.createElement('div');
         item.className = 'relative pl-8';
 
