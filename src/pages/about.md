@@ -5,11 +5,9 @@ title: "关于"
 
 自 <span id="start-year" class="font-bold text-accent">0</span> 年 <span id="start-month" class="font-bold text-accent">0</span> 月 <span id="start-day" class="font-bold text-accent">0</span> 日起，本站已运行 <span id="running-days" class="font-bold text-accent">0</span> 天，截至到今天，共写了博文 <span id="total-posts" class="font-bold text-accent">0</span> 篇，计 <span id="total-words" class="font-bold text-accent">0.0</span> 万字。
 
-起初，我的博客只是用来记录学习过程中的技术笔记，方便在日后查阅和回顾
+起初，我的博客只是用来写编程笔记，方便在日后查阅
 
-然而，随着时间的推移，博客逐渐成为了我生活的一部分。不只是技术，更记录了我对生活、户外、音乐和阅读的感悟
-
-这些记录让我更好地理解自己，也让我在反思和记录的过程中，感受到文字的力量
+然而，随着时间的推移，博客逐渐成为了我生活的一部分。不止于技术，更记录了我对生活、户外、音乐和阅读的感悟，也让我在思考和记录的过程中，感受到文字的力量
 
 ## 博主
 
@@ -32,6 +30,7 @@ title: "关于"
 - 2024-07-22：通过 Tencent Cloud COS 套加 CDN 进一步加速国内访问
 - 2025-05-25：舍弃 Jekyll 架构，Fork Astro Paper，更新博客框架
 - 2025-05-25：将评论系统从 Disqus 迁移至 Artalk，提升响应速度
+- 2025-11-03：将博客域名从 lhasa.icu 改为 blog.lhasa.icu
 
 ## LICENSE
 
