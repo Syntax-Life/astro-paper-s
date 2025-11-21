@@ -91,8 +91,8 @@ const zhCN: typeof en = {
     desc: "我发过的所有日志。",
   },
   feeds: {
-    title: "逛逛",
-    desc: "我订阅的所有博客",
+    title: "邻居",
+    desc: "我的网上邻居",
   },
   tags: {
     title: "标签",
