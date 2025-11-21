@@ -16,7 +16,7 @@ let tags = getUniqueTags(posts);
 
 <Layout title={`${_t.tags.title} | ${SITE.title}`}>
   <Header />
-  <Main pageTitle={_t.tags.title} pageDesc={_t.tags.desc}>
+  <Main pageTitle="" pageDesc={_t.tags.desc}>
     <ul>
       {
         tags.map(({ tag, tagName, count }) => (
