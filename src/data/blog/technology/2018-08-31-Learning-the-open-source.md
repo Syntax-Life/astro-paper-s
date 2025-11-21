@@ -10,7 +10,7 @@ tags:
 categories: ["技术"]
 toc: false
 comments: false
-image: openSource.jpg_81
+image: opensource.jpg_81
 ---
 本文转自[华为章宇的博客](https://yizhaolingyan.net/)
 

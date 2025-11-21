@@ -10,7 +10,7 @@ tags:
 categories: ["技术"]
 toc: false
 comments: false
-image: centOS.jpg_81
+image: centos.jpg_81
 ---
 
 前几次系统数据老是出问题，前几天经理让我给写个数据库自动备份，Shell能力有限，周六日再改改...

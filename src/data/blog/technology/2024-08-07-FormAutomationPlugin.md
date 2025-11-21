@@ -11,7 +11,7 @@ tags:
 categories: ["技术"]
 toc: false
 comments: false
-image: Form-automation-plugin.png_81
+image: form-automation-plugin.png_81
 ---
 
 在刷博客的时候，最麻烦的事情之一就是手动填写各种表单。为了提高我的冲浪体验，诞生了这款表单自动化插件。经过爬虫上百次调教，兼容95%博客，另外5%的网站正常人写不出来，autocomplete小伎俩都上不了台面，各种防止逆向、防调试测试，心累。

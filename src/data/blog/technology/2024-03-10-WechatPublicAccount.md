@@ -10,7 +10,7 @@ tags:
 categories: ["技术"]
 toc: false
 comments: false
-image: WechatPublicAccount.png_81
+image: wechatpublicaccount.png_81
 ---
 
 改名记录：

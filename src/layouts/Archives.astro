@@ -20,7 +20,7 @@ const { page } = Astro.props;
 
 <Layout title={`${_t.archives.title} | ${SITE.title}`}>
   <Header activeNav="posts" />
-  <Main pageTitle={_t.archives.title} pageDesc={_t.archives.desc}>
+  <Main pageTitle="" pageDesc={_t.archives.desc}>
     <ul>
       {
         page.data.map(({ data, id, filePath }) => (

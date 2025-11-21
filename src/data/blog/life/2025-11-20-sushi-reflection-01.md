@@ -12,7 +12,7 @@ tags:
 categories: ["阅读"]
 toc: false
 comments: false
-image: 20251107171244_615_266.jpg_81
+image: logo.png_81
 ---
 今天看了一本关于苏轼的传记，其中有首诗词让我感到震惊的同时又有一种无力感
 

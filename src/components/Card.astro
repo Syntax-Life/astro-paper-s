@@ -24,75 +24,99 @@ const {
   timezone,
   tags,
   categories,
+  image,
 } = data;
 
 const headerProps = {
   style: { viewTransitionName: slugifyStr(title) },
-  class: "text-lg font-medium hover:underline",
+  class: "text-lg font-medium hover:underline truncate overflow-hidden whitespace-nowrap",
 };
 
 // Get display options from config
 const { showSubtitle, showDescription, showCategories, showTags, showCommentCount } = SITE.displayOptions;
+
+const buildCoverSrc = (): string | undefined => {
+  const src = typeof image === "string" ? image.trim() : "";
+  if (!src) return undefined;
+  if (src.startsWith("http://") || src.startsWith("https://")) return src;
+  if (src.includes("cos.lhasa.icu")) return src;
+  const segments = id.split("/").filter(Boolean);
+  const slug = segments.length ? segments[segments.length - 1] : "";
+  return `${SITE.imageConfig.imagesUrl}/${slug}/${src}`;
+};
+
+const coverSrc = buildCoverSrc();
 ---
 
 <li class="my-4">
   <a href={getPath(id, filePath)} class="group">
-    <div
-      class="inline-block text-lg font-medium text-accent underline-offset-4 group-hover:underline focus-visible:no-underline focus-visible:underline-offset-0"
-    >
-      {
-        variant === "h2" ? (
-          <h2 {...headerProps}>{title}</h2>
-        ) : (
-          <h3 {...headerProps}>{title}</h3>
-        )
-      }
-    </div>
-    {subtitle && showSubtitle && <h4 class="text-md mb-3">{subtitle}</h4>}
-
-    {showDescription && <p class="mb-1 text-sm">{description || fallbackDesc}</p>}
-
-    <div class="flex flex-row flex-nowrap items-center space-x-2 whitespace-nowrap">
-      <div class="mr-1 flex items-center space-x-0.5">
-        <Datetime
-          pubDatetime={date}
-          modDatetime={updated}
-          {timezone}
-          class="opacity-80"
+    <div class="flex items-start gap-3">
+      {coverSrc && (
+        <img
+          src={coverSrc}
+          alt={title}
+          loading={SITE.imageConfig.loading.lazy ? "lazy" : "eager"}
+          class="w-[50px] h-[50px] object-cover rounded-md shrink-0"
         />
-      </div>
-      {
-        showCategories && categories.length > 0 && (
-          <div class="mr-1 flex items-center space-x-0.5 opacity-80">
-            <IconCategory class="mt-0.5 h-3 w-3" />
-            <span class="text-xs">{categories}</span>
-          </div>
-        )
-      }
-      {
-        showTags && tags.length > 0 && (
-          <div class="flex items-center space-x-0.5 opacity-80">
-            <IconTag class="mt-0.5 h-3 w-3" />
-            <div class="flex flex-wrap">
-              {tags.map((tag: string) => (
-                <p class="mr-2 text-xs">#{tag}</p>
-              ))}
-            </div>
-          </div>
-        )
-      }
+      )}
+      <div class="min-w-0 flex-1">
+        <div
+          class="text-lg font-medium text-accent underline-offset-4 group-hover:underline focus-visible:no-underline focus-visible:underline-offset-0 min-w-0"
+        >
+          {
+            variant === "h2" ? (
+              <h2 {...headerProps}>{title}</h2>
+            ) : (
+              <h3 {...headerProps}>{title}</h3>
+            )
+          }
+        </div>
+        {subtitle && showSubtitle && <h4 class="text-md mb-3">{subtitle}</h4>}
+        {showDescription && <p class="mb-1 text-sm">{description || fallbackDesc}</p>}
 
-      {
-        showCommentCount && (
-          <div class="flex items-center space-x-0.5 opacity-80">
-            <div class="flex flex-wrap">
-              <p class="mr-2 text-xs">
-                · Comments <span class="artalk-comment-count" data-page-key={getPath(id, filePath)}></span>
-              </p>
-            </div>
+        <div class="mt-1 flex flex-row flex-nowrap items-center space-x-2 whitespace-nowrap">
+          <div class="mr-1 flex items-center space-x-0.5">
+            <Datetime
+              pubDatetime={date}
+              modDatetime={updated}
+              {timezone}
+              class="opacity-80"
+            />
           </div>
-        )
-      }
+          {
+            showCategories && categories.length > 0 && (
+              <div class="mr-1 flex items-center space-x-0.5 opacity-80">
+                <IconCategory class="mt-0.5 h-3 w-3" />
+                <span class="text-xs">{categories}</span>
+              </div>
+            )
+          }
+          {
+            showTags && tags.length > 0 && (
+              <div class="flex items-center space-x-0.5 opacity-80">
+                <IconTag class="mt-0.5 h-3 w-3" />
+                <div class="flex flex-wrap">
+                  {tags.map((tag: string) => (
+                    <p class="mr-2 text-xs">#{tag}</p>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+
+          {
+            showCommentCount && (
+              <div class="flex items-center space-x-0.5 opacity-80">
+                <div class="flex flex-wrap">
+                  <p class="mr-2 text-xs">
+                    · Comments <span class="artalk-comment-count" data-page-key={getPath(id, filePath)}></span>
+                  </p>
+                </div>
+              </div>
+            )
+          }
+        </div>
+      </div>
     </div>
   </a>
 </li>

@@ -29,6 +29,7 @@ const blog = defineCollection({
 
       canonicalURL: z.string().optional(),
       ogImage: image().or(z.string()).optional(),
+      image: z.string().optional(),
     }),
 });
 

@@ -10,7 +10,7 @@ tags:
 categories: ["生活"]
 toc: false
 comments: false
-image: TechnologyBlessingAndCurse.jpg_81
+image: technologyblessingandcurse.jpg_81
 ---
 今天一个偶然接触到了Clarity Session Recording，当我看到它在我调试本地网站时，它居然录制了一条长达45分钟的视频，我大为震惊！由此，我怀揣着对技术的敬畏和亢奋的状态写下来这篇文章，虽然我非技术大牛，也非经济哲学家，但丝毫不影响我对技术的一些拙见。
 

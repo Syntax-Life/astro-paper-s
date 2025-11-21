@@ -11,7 +11,7 @@ tags:
 categories: ["技术"]
 toc: false
 comments: false
-image: expressive-code.jpg_81
+image: logo.png_81
 ---
 
 我最初用的代码高亮插件是[Shiki](https://shiki.style/)，由 [Astro Paper](https://github.com/satnaing/astro-paper) 自带，时间久了，就感觉平平无奇的。它无法像 Git diff 那样，把增删的代码做出差异化表达

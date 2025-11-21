@@ -11,7 +11,7 @@ tags:
 categories: ["技术"]
 toc: false
 comments: false
-image: ThinkPHP.jpg_81
+image: thinkphp.jpg_81
 ---
 - ThinkPHP `6.0` 要求 PHP >= `7.1.0`
 - `6.0`版本开始，必须通过`Composer`方式安装和更新，无法使用Git下载安装。

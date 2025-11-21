@@ -11,7 +11,7 @@ tags:
 categories: ["技术"]
 toc: false
 comments: false
-image: EasyFill128.webp_81
+image: easyfill128.webp_81
 ---
 ***Artalk-ui*** 是 [Artalk](https://github.com/ArtalkJS/Artalk) `v2.9.1` 的一个分支，主要重构 ui
 

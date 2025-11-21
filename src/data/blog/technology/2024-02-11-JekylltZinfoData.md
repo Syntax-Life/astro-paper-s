@@ -11,7 +11,7 @@ tags:
 categories: ["技术"]
 toc: false
 comments: false
-image: JekylltZinfoData.png_81
+image: jekylltzinfodata.png_81
 ---
 由于Jekyll默认使用UTC时区，导致博客更新时间不准确。这里需要写入上海时间：timezone: Asia/Shanghai，但是我在本地调试时需要在配置内注释掉，不然就会报错
 
